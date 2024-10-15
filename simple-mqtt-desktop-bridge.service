@@ -1,0 +1,11 @@
+[Unit]
+Description=A simple way to bridge between home assistant and linux 
+
+[Service]
+ExecStart=/home/dani/.cargo/bin/simple-mqtt-desktop-bridge
+Environment="IP=192.168.1.15"
+Environment="PORT=1883"
+Environment="SPECS_INTERVAL=60000"
+
+[Install]
+WantedBy=multi-user.target 
