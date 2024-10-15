@@ -8,4 +8,4 @@ Environment="PORT=1883"
 Environment="SPECS_INTERVAL=60000"
 
 [Install]
-WantedBy=multi-user.target 
+WantedBy=default.target
