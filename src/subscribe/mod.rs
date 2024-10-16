@@ -3,6 +3,7 @@ use std::{collections::HashMap, sync::{Arc, Mutex}};
 use rumqttc::{Client, Publish, QoS};
 
 pub(crate) mod notification;
+pub(crate) mod shutdown;
 
 type SubscribeFn = fn(client: Arc<Mutex<Client>>, payload: String);
 

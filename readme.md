@@ -10,6 +10,31 @@
 }
 ```
 
+**Home Assistant Example:**
+```yml
+    - action: mqtt.publish
+    metadata: {}
+    data:
+      evaluate_payload: false
+      qos: 0
+      retain: false
+      payload: |-
+        {
+            "summary": "Title",
+            "body": "The body of your notification"
+            }
+      topic: notify
+```
+
+### Shutdown Computer
+**Topic:** `smqttdb-sleep`
+```json
+{
+  "time": "sleep command arguments. Ex: 'now', '+2', '8:00' "
+}
+```
+
+
 ## Subscribe:
 ### Computer Specifications
 
@@ -23,6 +48,7 @@
     "physical_core_count": 0,
     "total_memory": 0,
     "available_memory": 0,
+    "used_memory": 0,
     "cpus": [
         {
             "name": "cpu0",
@@ -35,6 +61,16 @@
 }
 
 ```
+`configuration.yml`
+```yml
+mqtt:
+  sensor:
+    - name: "Computer Used Memory"
+      state_topic: "smqttdb-specs"
+      value_template: "{{ value_json.used_memory | float / 1000000 | round(0) }}"
+      unit_of_measurement: "MB"
+```
+
 
 
 ## Environment Variables

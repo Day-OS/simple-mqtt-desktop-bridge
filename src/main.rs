@@ -1,5 +1,6 @@
 use publish::PublishQueries;
 use rumqttc::{Client, MqttOptions};
+use simple_logger::SimpleLogger;
 use subscribe::Subscribe;
 use std::{sync::{Arc, Mutex}, time::Duration};
 use dotenv::dotenv;
@@ -9,6 +10,7 @@ mod publish;
 
 fn main() {
     dotenv().ok();
+    SimpleLogger::new().init().unwrap();
     let ip: String = std::env::var("IP").unwrap();
     let port: u16 = std::env::var("PORT").unwrap().parse().unwrap();
     println!("CONNECTING TO: {ip}:{port}");
@@ -24,6 +26,7 @@ fn main() {
 
     let subs = Subscribe::new()
         .add_query(topics::TOPIC_NOTIFY.to_owned(), subscribe::notification::on_notification_request)
+        .add_query(topics::TOPIC_SLEEP.to_owned(), subscribe::shutdown::on_sleep_request)
         .subscribe(arc_mutex_client.clone());
     
 

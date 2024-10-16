@@ -15,6 +15,7 @@ struct Specs{
     physical_core_count: Option<usize>,
     total_memory: u64,
     available_memory: u64,
+    used_memory: u64,
     cpus: Vec<CPU>,
     global_cpu_usage: f32,
 }
@@ -45,6 +46,7 @@ pub fn publish_specs(client: Arc<Mutex<Client>>) {
         total_swap: sys.total_swap(),
         used_swap: sys.used_swap(),
         free_swap: sys.free_swap(),
+        used_memory: sys.used_memory(),
     };
     let json = serde_json::to_string(&specs).unwrap();
     match client.try_lock() {
