@@ -2,7 +2,7 @@
 
 ### Notify Linux computer
 
-**Topic:** `smqttdb-notify`
+**Topic:** `smqttdb-notify` for all devices or `smqttdb-notify-<DEVICE_ID>` for a specific device
 ```json
 {
   "summary": "Title",
@@ -27,7 +27,7 @@
 ```
 
 ### Shutdown Computer
-**Topic:** `smqttdb-sleep`
+**Topic:** `smqttdb-sleep` for all devices or `smqttdb-sleep-<DEVICE_ID>` for a specific device
 ```json
 {
   "time": "sleep command arguments. Ex: 'now', '+2', '8:00' "

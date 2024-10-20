@@ -6,6 +6,7 @@ ExecStart=/home/dani/.cargo/bin/simple-mqtt-desktop-bridge
 Environment="IP=192.168.1.15"
 Environment="PORT=1883"
 Environment="SPECS_INTERVAL=60000"
+Environment="DEVICE_ID=PC"
 
 [Install]
 WantedBy=default.target
