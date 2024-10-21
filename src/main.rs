@@ -30,7 +30,10 @@ fn main() {
 
     PublishQueries::new(device_id.clone())
     .add_query_once(Box::new(publish::publish_specs::OnceSpecs))
+        .add_query_once(Box::new(publish::publish_specs::OnceSpecs))
         .add_query(Box::new(publish::publish_specs::UpdateSpecs))
+        .add_query(Box::new(publish::publish_mpris::UpdateMPRIS))
+        .add_query(Box::new(publish::publish_last_update::LastUpdate))
         .execute(arc_mutex_client.clone());
 
     let subs = Subscribe::new(device_id)

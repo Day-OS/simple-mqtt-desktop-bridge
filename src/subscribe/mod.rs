@@ -48,7 +48,6 @@ impl Subscribe {
             Ok(client) => {
                 for (topic, _) in self.subscriptions.iter() {
                     client.subscribe(topic, QoS::AtLeastOnce).unwrap();
-                    client.subscribe(format!("{topic}-{}", self.device_id), QoS::AtLeastOnce).unwrap();
                 }
             }
             Err(e) => log::error!("{e}"),

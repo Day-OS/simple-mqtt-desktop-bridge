@@ -5,7 +5,8 @@ use std::{
     time::Duration,
 };
 pub(crate) mod publish_specs;
-
+pub(crate) mod publish_mpris;
+pub(crate) mod publish_last_update;
 
 
 
